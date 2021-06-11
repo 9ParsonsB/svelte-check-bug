@@ -1,0 +1,30 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@tsconfig/svelte/tsconfig.json",
+    "target": "ES2020",
+    "include": ["src/**/*"],
+    "exclude": [
+        "node_modules/*",
+        "__sapper__/*",
+        "public/*",
+        "bin/*",
+        "wwwroot/*"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "resolveJsonModule": true,
+        "types": ["svelte", "dom-mediacapture-record"],
+        "baseUrl": ".",
+        "paths": {
+            "$src/*":           ["./src/*"],
+            "$routes/*":        ["./src/routes/*"],
+            "$components/*":    ["./src/components/*"],
+            "$scripts/*":       ["./src/scripts/*"],
+            "$stores/*":        ["./src/scripts/stores/*"],
+            "$types/*":         ["./src/scripts/types/*"],
+            "$api/*":           ["./src/scripts/api/*"],
+        }
+    },
+    "jsx": "preserve"
+}
