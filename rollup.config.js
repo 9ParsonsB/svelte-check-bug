@@ -4,12 +4,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import globals from 'rollup-plugin-node-globals';
 import typescript from '@rollup/plugin-typescript';
-import json from "@rollup/plugin-json";
-import postcss from 'rollup-plugin-postcss';
 import del from 'rollup-plugin-delete';
-import alias from '@rollup/plugin-alias';
 
-let genSvelteConfig = require('./svelte.config.js').createModule;
 const production = false;
 const port = process.env.PORT;
 const buildDir = 'wwwroot/build';
@@ -50,20 +46,8 @@ export default {
 
 		typescript({ sourceMap: !production, inlineSources: !production }),
 
-		svelte(genSvelteConfig(!production)),
+		svelte(),
 
-        alias({
-            resolve: [".svelte", ".ts"],
-            entries: [
-                { find: '$src', replacement: "src" },
-                { find: '$routes', replacement: "src/routes" },
-                { find: '$components', replacement: "src/components" },
-                { find: '$scripts', replacement: "src/scripts" },
-                { find: '$stores', replacement: "src/scripts/stores" },
-                { find: '$types', replacement: "src/scripts/types" },
-                { find: '$api', replacement: "src/scripts/api" }
-            ]
-        }),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -
@@ -80,11 +64,9 @@ export default {
 			sourceMap: !production,
 			inlineSources: !production
 		}),
-		json(),
 		globals(),
 		//builtins(),
 		//babel({exclude: "node_modules/**"}),
-		postcss({extract: true, extract: "bundle.css", sourceMap: "inline", minimize: false, plugins: [require('autoprefixer')]}),
 		del({targets: 'wwwroot/build/*'}),
 
 		// In dev mode, call `npm run start` once
