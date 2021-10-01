@@ -10,11 +10,6 @@ function createModule(production) {
         // enable run-time checks when not in production
         compilerOptions: { dev: !production, sourcemap: !production, hydratable: true },
         preprocess: sveltePreprocess({
-            defaults: {
-                markup: 'html',
-                script: 'typescript',
-                style: 'scss'
-            },
             sourceMap: "inline",
             postcss: {
                 plugins: [postCssScrollbar(), autoPrefixer(), postNormalize()]

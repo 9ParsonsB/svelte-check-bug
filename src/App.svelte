@@ -1,13 +1,25 @@
 <script lang="ts">
-let text = "World"
-import {Circle} from "svelte-loading-spinners"
+	let text = "World";
+
+	import Home from "./Home.svelte";
+	import Exam from "./Exam.svelte";
+	import { Router, Route } from "svelte-navigator";
+	const routes = [
+		{ path: "/", component: Home },
+		{ path: "/exam", component: Exam },
+	];
 </script>
 
-<span>Hello, {text}!</span>
+<Router>
+	{#each routes as { path, component }}
+		<Route path="{path}">
+			<svelte:component this="{component}" />
+		</Route>
+	{/each}
+</Router>
 
-<Circle />
 <style>
-span {
-	font-size: 3em;
-}
+	span {
+		font-size: 3em;
+	}
 </style>

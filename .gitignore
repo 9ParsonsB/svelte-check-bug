@@ -370,3 +370,4 @@ MigrationBackup/
 .idea/
 *.DotSettings
 
+src-tauri/target
