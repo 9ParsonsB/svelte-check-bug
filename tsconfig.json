@@ -2,7 +2,9 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@tsconfig/svelte/tsconfig.json",
     "target": "ES2020",
-    "include": ["src/**/*"],
+    "include": [
+        "src/**/*"
+    ],
     "exclude": [
         "node_modules/*",
         "__sapper__/*",
@@ -11,19 +13,55 @@
         "wwwroot/*"
     ],
     "compilerOptions": {
+        "moduleResolution": "Node",
+        "importsNotUsedAsValues": "error",
+        "isolatedModules": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
         "resolveJsonModule": true,
-        "types": ["svelte", "dom-mediacapture-record"],
+        "target": "ES6",
+        "module": "esnext",
+        "useDefineForClassFields": true,
+        "types": [
+            "svelte",
+            "dom-mediacapture-record",
+            "video.js",
+            "wavesurfer.js",
+            "browser"
+        ],
+        "lib": [
+            "ES6",
+            "ES7",
+            "ESNext",
+            "WebWorker",
+            "DOM"
+        ],
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
         "baseUrl": ".",
         "paths": {
-            "$src/*":           ["./src/*"],
-            "$routes/*":        ["./src/routes/*"],
-            "$components/*":    ["./src/components/*"],
-            "$scripts/*":       ["./src/scripts/*"],
-            "$stores/*":        ["./src/scripts/stores/*"],
-            "$types/*":         ["./src/scripts/types/*"],
-            "$api/*":           ["./src/scripts/api/*"],
+            "$src/*": [
+                "./src/*"
+            ],
+            "$routes/*": [
+                "./src/routes/*"
+            ],
+            "$components/*": [
+                "./src/components/*"
+            ],
+            "$scripts/*": [
+                "./src/scripts/*"
+            ],
+            "$stores/*": [
+                "./src/scripts/stores/*"
+            ],
+            "$types/*": [
+                "./src/scripts/types/*"
+            ],
+            "$api/*": [
+                "./src/scripts/api/*"
+            ],
         }
     },
     "jsx": "preserve"
